@@ -1,0 +1,93 @@
+*{
+	margin: 0;
+	padding: 0;
+	overflow: hidden;
+}
+
+.about
+{
+	min-height: 100vh;
+	width: 100%;
+	background-image: linear-gradient(rgba(4,9,30,0.9),rgba(4,9,30,0.9)),url("page2.png");
+	background-position: center;
+	position: relative;
+}
+
+.header
+{
+	min-height: 100vh;
+	width: 100%;
+	background-image: linear-gradient(rgba(4,9,30,0.7),rgba(4,9,30,0.7)),url("bgimage.jpg");
+	background-position: center;
+	position: relative;
+}
+
+.logo
+{
+	height: 30vh;
+	width: 24vh;
+	background-image: url("logo.png");
+	background-size: cover;
+}
+
+nav
+{
+	display: flex;
+	justify-content: space-between;
+}
+
+.nav_links ul li{
+	list-style: none;
+	display: inline-block;
+	position: relative;top: 0vh;
+	padding: 0px 10px;
+}
+
+.nav_links ul li a{
+	text-decoration: none;
+	color: orange;
+}
+
+.nav_links ul li a:hover
+{
+	color: aqua;
+}
+
+.nav_links
+{
+	flex: 1;
+	text-align: right;
+	padding: 2% 3%;
+}
+
+.textbox h1{
+	font-size: 40px;
+	color: yellow;
+}
+
+.textbox h2{
+	font-size: 30px;
+	color: yellow;
+}
+.textbox
+{
+	padding-top: 30px;
+	line-height: 50px;
+	text-align: center;
+}
+
+.text
+{
+	font-weight: bold;
+	font-style: italic;
+	color: orange;
+	font-size: 30px;
+	line-height: 40px;
+	text-align: center ;
+}
+
+.mosscheck 
+{
+	background-color: white;
+	min-height: 100vh;
+}
