@@ -1,3 +1,4 @@
+
 import os
 import csv
 from flask import Flask, render_template, request, url_for, redirect
@@ -9,6 +10,7 @@ import sqlite3 as sq
 #  import func
 
 # basedir = os.path.abspath(os.path.dirname(__file__))
+listoftables=[]
 
 
 app = Flask(__name__)
@@ -41,6 +43,7 @@ def index():
 def upload():
     if request.method == 'POST':
         table = request.form['table']
+        listoftables.append(table)
         f = request.files['file']
         f.save(secure_filename(f.filename))  # this will secure the file
         # print(f.filename)
@@ -109,6 +112,18 @@ def updatecoldb():
 @app.route("/redirect",methods=["GET","POST"])
 def redirecting():
     return render_template("index.html")
+
+@app.route('/search',methods=['GET','POST'])
+def display():
+    Cur.execute("""SELECT name FROM sqlite_master 
+    WHERE type='table';""")
+    
+    for row in Cur:
+        for j in row:
+            if j not in listoftables:
+                listoftables.append(j)
+    print(listoftables)
+    return render_template('search.html',listoftables=listoftables)
 
 if __name__ == '__main__':
     app.run(debug=True)
