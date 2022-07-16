@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!--helps making website responsive-->
+    <!-- <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}"> -->
+    <link rel="stylesheet" href="/static/style.css">
+    <title>MW-MossWallah</title>
+</head>
+
+<body>
+
+    <div class="datafeed">
+
+        <nav>
+            <div class="logo">
+            </div>
+            <div class="nav_links">
+                <ul>
+                    <li><a href="#header">HOME</a></li>
+                    <li><a href="#about">ABOUT</a></li>
+                    <li><a href="#checkmoss">MOSS</a></li>
+                    <li><a href="#datafeed">FEED</a></li>
+                    <li><a href="">SEARCH</a></li>
+                    <li><a href="">HELP</a></li>
+                </ul>
+            </div>
+        </nav>
+        <H1 id="update">DB UPDATE (Rno/Name)</H1>
+
+        <form action="updatecollegedb" method="POST" enctype="multipart/form-data" class="form1">
+            <!-- <h1 id="pg31"> : </h1> -->
+            <!-- <input type="text" name="table" class="text"> -->
+            <!-- <br></br> -->
+            <h2 id="pg3">Choose a <b>CSV</b> File</h2>
+            <input type="file" name="file1" class="file">
+            <!-- <input type="text" name="habibi"> -->
+            <button type="submit" class="submit">Submit</button>
+            <div class="updatedb">
+                <!-- <p>To update the college database , click <a href="update.html">here</a></p> -->
+            </div>
+        </form>
+
+    </div>
+</body>
+
+</html>
