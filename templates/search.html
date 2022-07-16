@@ -7,36 +7,41 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <!--helps making website responsive-->
     <!-- <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}"> -->
-    <link rel="stylesheet" href="../static/style.css">
+    <link rel="stylesheet" href="/static/style.css">
     <title>MW-MossWallah</title>
 </head>
 
 <body>
 
-    <div class="datafeed">
+    <div class="search">
 
         <nav>
             <div class="logo">
             </div>
             <div class="nav_links">
                 <ul>
-                    <li><a href="#header">HOME</a></li>
-                    <li><a href="#about">ABOUT</a></li>
-                    <li><a href="#checkmoss">MOSS</a></li>
-                    <li><a href="#datafeed">FEED</a></li>
-                    <li><a href="">SEARCH</a></li>
-                    <li><a href="">HELP</a></li>
+                    <li><a href="/">HOME</a></li>
+                    <li><a href="/">ABOUT</a></li>
+                    <li><a href="/">MOSS</a></li>
+                    <li><a href="/">FEED</a></li>
+                    <li><a href="/">SEARCH</a></li>
+                    <li><a href="/">HELP</a></li>
                 </ul>
             </div>
         </nav>
-
-        <form action="">
-            <label>Select Assignments</label>
-            <select name="" id="">
+        <label id="droptext">Select Assignments</label>
+        <form action="/db">
+            <select name="dropdown" id="drop">
                 {% for table in listoftables %}
-                <option>{{table}}</option>
+                <option value="{{table}}">{{table}}</option>
                 {% endfor %}
             </select>
+            <!-- <hr> -->
+            <h2 id="okko">Enter roll numbers : </h2>
+            <input type="text" id="inp1" name="rno1">
+            <input type="text" id="inp2" name="rno2">
+            <button type="submit">Search</button>
+            <hr>
         </form>
 
     </div>
