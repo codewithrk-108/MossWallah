@@ -60,7 +60,12 @@ nav
 	padding: 2% 3%;
 }
 
-.textbox h1{
+.textbox h1#header{
+	font-size: 40px;
+	color: yellow;
+}
+
+.textbox h1#ok{
 	font-size: 40px;
 	color: yellow;
 }
@@ -90,4 +95,96 @@ nav
 {
 	background-color: white;
 	min-height: 100vh;
+}
+
+.datafeed
+{
+	height: 100vh;
+	width: 100vw;
+	background-image: linear-gradient(rgba(4,9,30,0.7),rgba(4,9,30,0.7)),url("datafeed.jpg");
+}
+
+form.form1
+{
+	margin-top: 10%;
+	height: 50vh;
+}
+
+input.file
+{
+	color: aqua;
+	background-color: blue;
+	font-size: 40px;
+	margin-left: 28%;
+	margin-bottom: 5%;
+}
+
+input.text
+{
+	height: 50px;
+	width: 500px;
+	margin-left: 35%;
+}
+
+/* h1#header
+{
+
+} */
+
+h1#pg31
+{
+	margin-left: 38%;
+	padding: 5px 5px;
+	color: aqua;
+}
+
+h2#pg3
+{
+	margin-left: 43%;
+	padding: 5px 5px;
+	color: aqua;
+}
+
+button.submit
+{
+	height: 50px;
+	width: 200px;
+	/* margin-top: 30%; */
+	position: relative;top: 10vh;right: 60vh;
+	background-color: orange;
+	color: azure;
+	font-size: 40px;
+	font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+
+h1#head
+{
+	margin-left: 35%;
+	color:yellow;
+	font-size: 60px;
+}
+
+h1#update
+{
+	margin-left: 30%;
+	color:yellow;
+	font-size: 60px;
+}
+
+.updatedb
+{
+	margin-left: 40%;
+	color: aqua;
+}
+
+.checkmoss
+{
+	height: 100vh;
+	background-color: green;
+}
+
+h1#jai
+{
+	font-size: 50px;
+	margin-left: 40%;	
 }
