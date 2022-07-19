@@ -25,16 +25,20 @@
 {
 	min-height: 100vh;
 	width: 100%;
-	background-image: linear-gradient(rgba(4,9,30,0.7),rgba(4,9,30,0.7)),url("bgimage.jpg");
+	background-image: linear-gradient(rgba(4,9,30,0.7),rgba(4,9,30,0.7)),url("moss.jpeg");
+	background-position:center;
+	background-repeat: no-repeat;
+	background-attachment:fixed;
 	background-position: center;
+	background-size: 100%;
 	position: relative;
 }
 
 .logo
 {
 	height: 30vh;
-	width: 24vh;
-	background-image: url("logo.png");
+	width: 25vh;
+	background-image: url("logo.jpeg");
 	background-size: cover;
 }
 
@@ -109,7 +113,10 @@ nav
 {
 	height: 100vh;
 	width: 100vw;
-	background-image: linear-gradient(rgba(4,9,30,0.7),rgba(4,9,30,0.7)),url("datafeed.jpg");
+	background-image: linear-gradient(rgba(4,9,30,0.7),rgba(4,9,30,0.7)),url("page4.jpg");
+	background-position:center;
+	background-repeat: no-repeat;
+	background-attachment:fixed;
 }
 
 form.form1
@@ -181,7 +188,9 @@ h1#update
 
 .updatedb
 {
-	margin-left: 40%;
+	font-size: medium;
+	font-size: 40px;
+	margin-left: 30%;
 	color: aqua;
 }
 
