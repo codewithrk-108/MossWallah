@@ -118,31 +118,78 @@ def showres():
         choice=request.form['dropdown']
         rno1 = request.form['rno1']
         rno2 = request.form['rno2']
+        print(listoftables)
+        Assignments=[]
+        for i in listoftables:
+            if i != "ALL":
+                Assignments.append(i)
+        print(Assignments)
         command1 = """SELECT * FROM '{}' """
         Cur.execute(command1.format(choice))
         print(rno1)
         print(rno2)
-        # if int(rno2) == None: This doesnt work
-        if rno2 == '':
-            for j in Cur:
-                # print(j[1])
-                if j[1] == int(rno1) or j[2] == int(rno1):
-                    print("Got Mossed in Question",end=" ")
-                    print(j[3],end=" ")
-                    print("in",end=" ")
-                    print(choice)
-        else:
-            check=0
-            for j in Cur:
-                # print(j[1])
-                if ((j[1] == int(rno1) or j[2] == int(rno1)) and (j[2] == int(rno2) or j[1] == int(rno2))):
-                    print("They both Got Mossed in Question",end=" ")
-                    print(j[3],end=" ")
-                    print("in",end=" ")
-                    print(choice)
-                    check=1
-            if check == 0:
+        if choice != "ALL":
+            # if int(rno2) == None: This doesnt work
+            if rno2 == '':
+                for j in Cur:
+                    # print(j[1])
+                    if j[1] == int(rno1) or j[2] == int(rno1):
+                        print("Got Mossed in Question",end=" ")
+                        print(j[3],end=" ")
+                        print("in",end=" ")
+                        print(choice)
+            elif rno1 == '':
+                for j in Cur:
+                    # print(j[1])
+                    if j[1] == int(rno2) or j[2] == int(rno2):
+                        print("Got Mossed in Question",end=" ")
+                        print(j[3],end=" ")
+                        print("in",end=" ")
+                        print(choice)
+            else:
+                check=0
+                for j in Cur:
+                    # print(j[1])
+                    if ((j[1] == int(rno1) or j[2] == int(rno1)) and (j[2] == int(rno2) or j[1] == int(rno2))):
+                        print("They both Got Mossed in Question",end=" ")
+                        print(j[3],end=" ")
+                        print("in",end=" ")
+                        print(choice)
+                        check=1
+                if check == 0:
                     print("The students entered weren't mossed with each other in this Assignment.")
+        else:
+            for i in Assignments:
+                    command1 = """SELECT * FROM '{}' """
+                    Cur.execute(command1.format(i))
+                    if rno2 == '':
+                        for j in Cur:
+                            # print(j[1])
+                            if j[1] == int(rno1) or j[2] == int(rno1):
+                                print("Got Mossed in Question",end=" ")
+                                print(j[3],end=" ")
+                                print("in",end=" ")
+                                print(i)
+                    elif rno1 == '':
+                        for j in Cur:
+                            # print(j[1])
+                            if j[1] == int(rno2) or j[2] == int(rno2):
+                                print("Got Mossed in Question",end=" ")
+                                print(j[3],end=" ")
+                                print("in",end=" ")
+                                print(i)
+                    else:
+                        check=0
+                        for j in Cur:
+                            # print(j[1])
+                            if ((j[1] == int(rno1) or j[2] == int(rno1)) and (j[2] == int(rno2) or j[1] == int(rno2))):
+                                print("They both Got Mossed in Question",end=" ")
+                                print(j[3],end=" ")
+                                print("in",end=" ")
+                                print(i)
+                                check=1
+                        if check == 0:
+                            print("The students entered weren't mossed with each other in this Assignment.")
         return "hello"
     return "ok"
 
