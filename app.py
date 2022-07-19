@@ -1,3 +1,4 @@
+# from asyncio.windows_events import NULL
 import os
 import csv
 from unicodedata import name
@@ -119,19 +120,29 @@ def showres():
         rno2 = request.form['rno2']
         command1 = """SELECT * FROM '{}' """
         Cur.execute(command1.format(choice))
-        # print("*********")
-        print("*********")
         print(rno1)
-        print("*********")
-        # print("*********")
-
-        for j in Cur:
-            # print(j[1])
-            if j[1] == int(rno1):
-                print("Got Mossed in Question",end=" ")
-                print(j[3],end=" ")
-                print("in",end=" ")
-                print(choice)
+        print(rno2)
+        # if int(rno2) == None: This doesnt work
+        if rno2 == '':
+            for j in Cur:
+                # print(j[1])
+                if j[1] == int(rno1) or j[2] == int(rno1):
+                    print("Got Mossed in Question",end=" ")
+                    print(j[3],end=" ")
+                    print("in",end=" ")
+                    print(choice)
+        else:
+            check=0
+            for j in Cur:
+                # print(j[1])
+                if ((j[1] == int(rno1) or j[2] == int(rno1)) and (j[2] == int(rno2) or j[1] == int(rno2))):
+                    print("They both Got Mossed in Question",end=" ")
+                    print(j[3],end=" ")
+                    print("in",end=" ")
+                    print(choice)
+                    check=1
+            if check == 0:
+                    print("The students entered weren't mossed in this Assignment.")
         return "hello"
     return "ok"
 
