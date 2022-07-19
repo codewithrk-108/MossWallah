@@ -1,4 +1,3 @@
-
 import os
 import csv
 from flask import Flask, render_template, request, url_for, redirect
@@ -125,5 +124,12 @@ def display():
     print(listoftables)
     return render_template('search.html',listoftables=listoftables)
 
+@app.route("/db",methods=['GET','POST'])
+def showres():
+    if request.method == "POST":
+        choice=request.form['dropdown']
+        rno1 = request.form['rno1']
+        rno2 = request.form['rno2']
+    return "ok"
 if __name__ == '__main__':
     app.run(debug=True)
