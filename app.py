@@ -142,7 +142,7 @@ def showres():
                     print(choice)
                     check=1
             if check == 0:
-                    print("The students entered weren't mossed in this Assignment.")
+                    print("The students entered weren't mossed with each other in this Assignment.")
         return "hello"
     return "ok"
 
