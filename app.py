@@ -1,14 +1,12 @@
 import os
 import csv
+from unicodedata import name
 from flask import Flask, render_template, request, url_for, redirect
 from flask_sqlalchemy import SQLAlchemy
+from matplotlib.pyplot import table
 from werkzeug.utils import secure_filename
 
 import sqlite3 as sq
-# from sqlalchemy.sql
-#  import func
-
-# basedir = os.path.abspath(os.path.dirname(__file__))
 listoftables=[]
 
 
@@ -35,9 +33,6 @@ Cur = conn.cursor()
 def index():
     return render_template("index.html")
 
-# no use of enctype
-
-
 @app.route('/uploading', methods=['GET', 'POST'])
 def upload():
     if request.method == 'POST':
@@ -45,14 +40,10 @@ def upload():
         listoftables.append(table)
         f = request.files['file']
         f.save(secure_filename(f.filename))  # this will secure the file
-        # print(f.filename)
 
         command1 = """CREATE TABLE IF NOT EXISTS '{}' (Sno VARCHAR(20),Rno1 DECIMAL(8,2),
             Rno2 DECIMAL(8,2), MossQ VARCHAR(20))"""
         Cur.execute(command1.format(table))
-
-
-        # Cur.execute(command1)
 
         with open(f.filename, 'r', newline="") as file:
             fn = csv.reader(file)
@@ -66,11 +57,7 @@ def upload():
                 # print(row)
                 Cur.execute("""INSERT INTO '{}' VALUES('{}','{}','{}','{}')""".format(table,id,Rno1,Rno2,Queslist))
                 conn.commit()
-    #         entry = MOSS(id=id,Rno1=Rno1 , Rno2=Rno2,Queslist=Queslist)
-    #         db.session.add(entry)
-    # db.session.commit()
     conn.commit()
-    # return "ok"
     return render_template("updated.html")
 
 @app.route("/updatecol", methods=['GET', 'POST'])
@@ -121,15 +108,32 @@ def display():
         for j in row:
             if j not in listoftables:
                 listoftables.append(j)
-    print(listoftables)
+    # print(listoftables)
     return render_template('search.html',listoftables=listoftables)
 
-@app.route("/db",methods=['GET','POST'])
+@app.route('/db',methods=['GET','POST'])
 def showres():
     if request.method == "POST":
         choice=request.form['dropdown']
         rno1 = request.form['rno1']
         rno2 = request.form['rno2']
+        command1 = """SELECT * FROM '{}' """
+        Cur.execute(command1.format(choice))
+        # print("*********")
+        print("*********")
+        print(rno1)
+        print("*********")
+        # print("*********")
+
+        for j in Cur:
+            # print(j[1])
+            if j[1] == int(rno1):
+                print("Got Mossed in Question",end=" ")
+                print(j[3],end=" ")
+                print("in",end=" ")
+                print(choice)
+        return "hello"
     return "ok"
+
 if __name__ == '__main__':
     app.run(debug=True)
