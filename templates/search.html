@@ -7,7 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <!--helps making website responsive-->
     <!-- <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}"> -->
-    <link rel="stylesheet" href="../static/style.css">
+    <link rel="stylesheet" href="/static/style.css">
     <title>MW-MossWallah</title>
 </head>
 
@@ -30,8 +30,8 @@
             </div>
         </nav>
         <label id="droptext">Select Assignments</label>
-        <form action="/db">
-            <select name="dropdown" id="drop">
+        <form action="db" method="POST">
+            <select name="dropdown" id="drop" type="text">
                 {% for table in listoftables %}
                 <option value="{{table}}">{{table}}</option>
                 {% endfor %}
