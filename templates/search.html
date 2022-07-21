@@ -32,6 +32,7 @@
         <label id="droptext">Select Assignments</label>
         <form action="db" method="POST">
             <select name="dropdown" id="drop" type="text">
+                <option value="ALL">ALL</option>
                 {% for table in listoftables %}
                 <option value="{{table}}">{{table}}</option>
                 {% endfor %}
