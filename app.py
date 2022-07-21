@@ -1,4 +1,4 @@
-# from asyncio.windows_events import NULL
+
 import os
 import csv
 from unicodedata import name
@@ -211,7 +211,53 @@ def showres():
             return render_template("error.html")
         else:
             return render_template("jinjatable.html",res=Resultlist)
-    return "ok"
+
+@app.route('/removefgs',methods=['GET','POST'])
+def rem():
+    Cur.execute("""SELECT name FROM sqlite_master 
+    WHERE type='table';""")
+    
+    for row in Cur:
+        for j in row:
+            if j not in listoftables:
+                if(j!='COLLEGEDB'):
+                    listoftables.append(j)
+    return render_template("removefgs.html",listoftables=listoftables)
+
+@app.route('/dbedit',methods=['GET','POST'])
+def edit():
+    choice = request.form['dropdown']
+    rno1 = request.form['rno1']
+    rno2 = request.form['rno2']
+    ques_string = request.form['ques']
+    # print({rno1,rno2,ques_string})
+    Cur.execute("""SELECT * FROM '{}' WHERE (Rno1='{}' AND Rno2='{}') or (Rno1='{}' AND Rno2='{}');""".format(choice,rno1,rno2,rno2,rno1))
+    for row in Cur:
+        print(row)
+        Sno = row[0]
+        orig = row[3].split(',')
+        final = ques_string.split(',')
+        print(orig,final)
+        newst=""
+        flag=0
+        err=0
+        for i in orig:
+            flag=0
+            for j in final:
+                if(j==i):
+                    flag=1
+                    break
+                if j not in orig:
+                    err=2
+                    break
+            if flag==0:
+                newst = newst+i+","
+        print(newst[:len(newst)-1:])
+    if err==2:
+        return render_template("error.html")
+    Cur.execute("""DELETE FROM '{}' WHERE (Rno1='{}' AND Rno2='{}') or (Rno1='{}' AND Rno2='{}');""".format(choice,rno1,rno2,rno2,rno1))
+    Cur.execute("""INSERT INTO '{}' VALUES('{}','{}','{}','{}')""".format(choice,Sno,rno1,rno2,newst[:len(newst)-1:]))
+    return render_template("updated.html")
 
 if __name__ == '__main__':
     app.run(debug=True)
