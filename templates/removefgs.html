@@ -7,17 +7,15 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <!--helps making website responsive-->
     <!-- <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}"> -->
-    <link rel="stylesheet" href="/static/style.css">
+    <link rel="stylesheet" href="../static/style.css">
     <title>MW-MossWallah</title>
 </head>
 
 <body>
-
-    <div class="search">
-
+    <div class="removeflags">
         <nav>
-            <div class="logo">
-            </div>
+            <!-- <div class="logo">
+            </div> -->
             <div class="nav_links">
                 <ul>
                     <li><a href="/">HOME</a></li>
@@ -29,22 +27,36 @@
                 </ul>
             </div>
         </nav>
-        <label id="droptext" style="color:yellow;margin-left: 35%; margin-bottom: 10%;font-weight: bolder; font-size: 40px;">Kripya Moss Check Karein...</label>
-        <form action="db" method="POST" style="margin-top: 5%;">
+        <h1 style="color:yellow;margin-left: 35%; margin-bottom: 10%;font-weight: bolder; font-size: 40px;">Moss Hatao... 2 min mein!!!</h1>
+        <label id="droptext">Select Assignments</label>
+        <form action="dbedit" method="POST">
             <select name="dropdown" id="drop" type="text">
-                <option value="ALL">ALL</option>
                 {% for table in listoftables %}
                 <option value="{{table}}">{{table}}</option>
                 {% endfor %}
             </select>
+            <br>
+            <br>
+            <br>
+            <br>
+    
             <!-- <hr> -->
-            <h2 id="okko" style="margin-left: 42%;">Select Assignments</h2>
-            <input type="text" id="inp1" name="rno1" value="Rno1">
-            <input type="text" id="inp2" name="rno2" value="Rno2">
-            <button type="submit">Search</button>
+            <h2 style="color:yellow;margin-left: 42%;">Enter roll numbers : </h2>
+            <br>
+            <br>
+            <input type="text" id="inp1" name="rno1">
+            <input type="text" id="inp2" name="rno2">
+            <br>
+            <br>
+            <br>
+            <br>
+            <h3 style="color:yellow;margin-left: 39%;">Enter Question No. in (1,2,3,...) format</h3>
+            <br>
+            <input type="text" id="inp3" name="ques">
+            <br>
+            <button type="submit" id="okkk">Search</button>
         </form>
-
+    
     </div>
 </body>
-
 </html>
