@@ -119,14 +119,17 @@ def showres():
         choice=request.form['dropdown']
         rno1 = request.form['rno1']
         rno2 = request.form['rno2']
-        print(listoftables)
+        # print(listoftables)
         Assignments=[]
         Resultlist=[]
         Names_dict={}
         Cur.execute("SELECT * FROM COLLEGEDB")
         for tup in Cur:
             Names_dict[int(tup[0])]=tup[1]
-        print(Names_dict)
+        # print(Names_dict)
+        Cur.execute("SELECT * FROM A1")
+        for row in Cur:
+            print(row)
         for i in listoftables:
             if i != "ALL":
                 Assignments.append(i)
@@ -145,7 +148,11 @@ def showres():
                         # print(j[3],end=" ")
                         # print("in",end=" ")
                         # print(choice)
+                        # print(j)
                         Resultlist.append([choice,Names_dict[int(j[1])] ,j[1],Names_dict[int(j[2])],j[2],j[3]])
+                        # Resultlist.append(-1)
+                if len(Resultlist)==0:
+                    Resultlist.append(-1)
             elif rno1 == '':
                 for j in Cur:
                     # print(j[1])
@@ -155,7 +162,8 @@ def showres():
                         # print("in",end=" ")
                         # print(choice)
                         Resultlist.append([choice,Names_dict[int(j[1])] ,j[1],Names_dict[int(j[2])],j[2],j[3]])
-
+                if len(Resultlist)==0:
+                    Resultlist.append(-1)
             else:
                 check=0
                 for j in Cur:
@@ -183,6 +191,8 @@ def showres():
                                 # print("in",end=" ")
                                 # print(i)
                                 Resultlist.append([i,Names_dict[int(j[1])] ,j[1],Names_dict[int(j[2])],j[2],j[3]])
+                        if len(Resultlist)==0:
+                            Resultlist.append(-1)
                     elif rno1 == '':
                         for j in Cur:
                             # print(j[1])
@@ -191,7 +201,11 @@ def showres():
                                 # print(j[3],end=" ")
                                 # print("in",end=" ")
                                 # print(i)
+                                # print(j)
                                 Resultlist.append([i,Names_dict[int(j[1])] ,j[1],Names_dict[int(j[2])],j[2],j[3]])
+                                # Resultlist.append(-1)
+                        if len(Resultlist)==0:
+                            Resultlist.append(-1)
                     else:
                         check=0
                         for j in Cur:
@@ -232,15 +246,16 @@ def edit():
     ques_string = request.form['ques']
     # print({rno1,rno2,ques_string})
     Cur.execute("""SELECT * FROM '{}' WHERE (Rno1='{}' AND Rno2='{}') or (Rno1='{}' AND Rno2='{}');""".format(choice,rno1,rno2,rno2,rno1))
+    err=0
+    Sno=0
+    newst=""
     for row in Cur:
         print(row)
         Sno = row[0]
         orig = row[3].split(',')
         final = ques_string.split(',')
         print(orig,final)
-        newst=""
         flag=0
-        err=0
         for i in orig:
             flag=0
             for j in final:
@@ -256,7 +271,8 @@ def edit():
     if err==2:
         return render_template("error.html")
     Cur.execute("""DELETE FROM '{}' WHERE (Rno1='{}' AND Rno2='{}') or (Rno1='{}' AND Rno2='{}');""".format(choice,rno1,rno2,rno2,rno1))
-    Cur.execute("""INSERT INTO '{}' VALUES('{}','{}','{}','{}')""".format(choice,Sno,rno1,rno2,newst[:len(newst)-1:]))
+    if(len(newst[:len(newst)-1:])>=1):
+        Cur.execute("""INSERT INTO '{}' VALUES('{}','{}','{}','{}')""".format(choice,Sno,rno1,rno2,newst[:len(newst)-1:]))
     return render_template("updated.html")
 
 if __name__ == '__main__':
