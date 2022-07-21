@@ -12,6 +12,100 @@
 	background-size: cover;
 }
 
+.help
+{
+	overflow: hidden;
+	min-height: 100vh;
+	width: 100%;
+	background-color: lemonchiffon;
+	background-image: url("help.jpg");
+	/* opacity: 5%; */
+	background-repeat: no-repeat;
+	background-size: 200%;
+	background-position: center;
+	position: relative;
+}
+
+@media (max-width: 999px) {
+    .whitespace {
+        display: none;
+    }
+}
+
+.internalcss {
+	height: 20vh;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+
+.internalcss h1 {
+	font-weight: lighter;
+	text-align: center;
+	letter-spacing: -2px;
+	line-height: 50px;
+}
+
+@media (max-width: 900px) {
+	.headercontact h1 {
+		font-size: 36px;
+	}
+}
+
+.line {
+    width: 206em;
+    top: 300%;
+    margin: auto;
+    border-right: 4px solid rgba(255, 255, 255, 0.75);
+    text-align: center;
+    white-space: nowrap;
+    overflow:hidden;
+    font-size: 40px;
+    transform: translateY(-10%);
+}
+
+.anim-typewriter {
+    animation: typewriter 2s steps(40) 1s 1 normal both, blinkTextCussor 750ms steps(40) infinite normal;
+}
+
+@keyframes typewriter {
+    from {
+        width: 0em;
+    }
+    to {
+        width:21em;
+    }
+}
+
+@media (max-width: 76px) {
+    @keyframes typewriter {
+        from {
+            width: 0;
+        }
+        to {
+            width: 20em;
+        }
+    }
+}
+
+@keyframes blinkTextCussor {
+    from {
+        border-right-color: rgba(255, 255, 255, 0.75);
+    }
+    to {
+        border-right-color: transparent;
+    }
+}
+
+.contact{
+	font-weight: bold;
+	font-style:normal;
+	color: lightgoldenrodyellow;
+	font-size: 30px;
+	line-height: 40px;
+	text-align: center ;
+}
+
 .removeflags
 {
 	height: 100vh;
