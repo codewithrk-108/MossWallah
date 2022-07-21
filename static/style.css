@@ -260,3 +260,53 @@ hr
 	width: 200px;
 	background-color: aquamarine;
 }
+
+h1#error
+{
+	margin-left: 30%;
+	color:yellow;
+	font-size: 60px;
+}
+
+#header1
+{
+	min-height: 100vh;
+	width: 100%;
+	background-image: linear-gradient(rgba(4,9,30,0.7),rgba(4,9,30,0.7)),url("error.png");
+	background-position:center;
+	background-repeat: no-repeat;
+	background-attachment:fixed;
+	background-position: center;
+	background-size: contain;
+	position: relative;
+}
+
+table
+{
+	height: fit-content;
+	width: fit-content;
+	border: 5px solid red;
+	color: aqua;
+	font-weight: bolder;
+	margin-left: 12%;
+}
+
+td,th
+{
+	width: 200px;
+	border: 5px solid red;
+	text-align: center;
+}
+
+#tab
+{
+	margin-left: 37%;
+	color:yellow;
+	font-size: 60px;
+	padding: 20px;
+}
+/* 
+tr
+{
+	border: 5px red;
+} */
