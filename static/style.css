@@ -18,7 +18,7 @@
 	min-height: 100vh;
 	width: 100%;
 	background-color: lemonchiffon;
-	background-image: url("help.jpg");
+	background-image: linear-gradient(rgba(4,9,30,0.6),rgba(4,9,30,0.6)),url("help.jpg");
 	/* opacity: 5%; */
 	background-repeat: no-repeat;
 	background-size: 200%;
