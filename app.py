@@ -1,4 +1,3 @@
-
 import os
 import csv
 from unicodedata import name
@@ -191,8 +190,6 @@ def showres():
                                 # print("in",end=" ")
                                 # print(i)
                                 Resultlist.append([i,Names_dict[int(j[1])] ,j[1],Names_dict[int(j[2])],j[2],j[3]])
-                        if len(Resultlist)==0:
-                            Resultlist.append(-1)
                     elif rno1 == '':
                         for j in Cur:
                             # print(j[1])
@@ -202,10 +199,10 @@ def showres():
                                 # print("in",end=" ")
                                 # print(i)
                                 # print(j)
+                                if(Resultlist[0]==-1):
+                                        Resultlist.remove(-1)
                                 Resultlist.append([i,Names_dict[int(j[1])] ,j[1],Names_dict[int(j[2])],j[2],j[3]])
                                 # Resultlist.append(-1)
-                        if len(Resultlist)==0:
-                            Resultlist.append(-1)
                     else:
                         check=0
                         for j in Cur:
@@ -217,11 +214,9 @@ def showres():
                                 # print(i)
                                 Resultlist.append([i,Names_dict[int(j[1])] ,j[1],Names_dict[int(j[2])],j[2],j[3]])
                                 check=1
-                        if check == 0:
-                            Resultlist.append(-1)
                             # print("The students entered weren't mossed with each other in this Assignment.")
         # print(Resultlist)
-        if(Resultlist[0]==-1):
+        if(Resultlist[0]==-1 or len(Resultlist)==0):
             return render_template("error.html")
         else:
             return render_template("jinjatable.html",res=Resultlist)
